@@ -6,17 +6,17 @@ def brigth(intensitas):
         return 255
     else:
         return intensitas
-def atur_bright(self, nilai_kecerahan):
-    height, width, channels = self.shape
+def atur_bright(citra, nilai_kecerahan):
+    height, width, channels = citra.shape
     for i in range(0, height - 1):
         for j in range(0, width - 1):
-            pixel = self[i, j]
-            pixel[0] = brigth(self[i, j][0] + nilai_kecerahan)
-            pixel[1] = brigth(self[i, j][1] + nilai_kecerahan)
-            pixel[2] = brigth(self[i, j][2] + nilai_kecerahan)
-            self[i, j] = pixel
-    return self
+            pixel = citra[i, j]
+            pixel[0] = brigth(citra[i, j][0] + nilai_kecerahan)
+            pixel[1] = brigth(citra[i, j][1] + nilai_kecerahan)
+            pixel[2] = brigth(citra[i, j][2] + nilai_kecerahan)
+            citra[i, j] = pixel
+    return citra
 gambar = cv2.imread("gambar.jpg",1)
-cv2.imshow("Dicerahkan", atur_bright(gambar, 255))
+cv2.imshow("Atur Kecerahan", atur_bright(gambar, 255))
 cv2.waitKey(0)
 cv2.destroyAllWindows()
